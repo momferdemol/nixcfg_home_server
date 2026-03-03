@@ -25,5 +25,5 @@ rm /etc/nixos/configuration.nix
 ```
 
 ```sh
-curl https://raw.githubusercontent.com/momferdemol/nixcfg_home_server/refs/heads/main/lxc/unbound/configuration.nix > /etc/nixos/configuration.nix
+curl https://raw.githubusercontent.com/momferdemol/nixcfg_home_server/refs/heads/main/unbound/configuration.nix > /etc/nixos/configuration.nix
 ```

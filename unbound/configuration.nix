@@ -34,6 +34,10 @@
 
   # clean up system logs old then 1 month
   systemd = {
+    services.qemu-guest-agent = {
+      wants = [ "network-online.target" ];
+      after = [ "network-online.target" ];
+    };
     services.clear-log = {
       description = "clean 30+ old logs every week";
       serviceConfig = {
@@ -51,7 +55,7 @@
   networking = {
     hostName = "unbound";
     useDHCP = false;
-    interfaces.eth0 = {
+    interfaces.ens18 = {
       ipv4.addresses = [
         {
           address = "192.168.10.10";
@@ -62,7 +66,7 @@
 
     defaultGateway = {
       address = "192.168.10.1";
-      interface = "eth0";
+      interface = "ens18";
     };
 
     networkmanager = {
@@ -143,6 +147,10 @@
         };
       };
       enableRootTrustAnchor = true;
+    };
+
+    qemuGuest = {
+      enable = true;
     };
 
     xserver.xkb = {
