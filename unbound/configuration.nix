@@ -1,21 +1,14 @@
-{ config, modulesPath, pkgs, lib, ... }:
+{ config, pkgs, ... }:
 
 {
   imports = [
-    "${modulesPath}/virtualisation/proxmox-lxc.nix"
+    ./hardware-configuration.nix
   ];
 
-  nix.settings = {
-    sandbox = false;
-  };
-
-  proxmoxLXC = {
-    manageNetwork = false;
-    privileged = true;
-  };
-
-  services.fstrim = {
-    enabled = false;
+  boot.loader.grub = {
+    enable = true;
+    device = "/dev/sda";
+    useOSProber = true;
   };
 
   system.autoUpgrade = {
@@ -34,7 +27,7 @@
     options = "--delete-older-than 7d";
   };
 
-  # Run garbage collection whenever there is less than 500MB free space left
+  # run garbage collection when less than 500MB free space left
   nix.extraOptions = ''
     min-free = ${toString (500 * 1024 * 1024)}
   '';
@@ -116,39 +109,47 @@
     unbound
   ];
 
-  services.unbound = {
-    enable = true;
-    user = "unbound";
-    group = "unbound";
-    settings = {
-      server = {
-        verbosity = 1;
-        auto-trust-anchor-file = "/var/lib/unbound/root.key";
-        qname-minimisation = true;
-        interface = "0.0.0.0";
-        access-control = "192.168.0.0/16 allow";
-        private-domain = "lan.d35c.net";
-        local-zone = "\"lan.d35c.net.\" redirect";
-        local-data = [
-          "\"lan.d35c.net.\tIN A 192.168.10.11\""
-        ];
-      };
-
-      forward-zone = [
-        {
-          name = ".";
-          forward-addr = [
-            "1.1.1.1"
-            "9.9.9.9"
+  services = {
+    unbound = {
+      enable = true;
+      user = "unbound";
+      group = "unbound";
+      settings = {
+        server = {
+          verbosity = 1;
+          auto-trust-anchor-file = "/var/lib/unbound/root.key";
+          qname-minimisation = true;
+          interface = "0.0.0.0";
+          access-control = "192.168.0.0/16 allow";
+          private-domain = "lan.d35c.net";
+          local-zone = "\"lan.d35c.net.\" redirect";
+          local-data = [
+            "\"lan.d35c.net.\tIN A 192.168.10.11\""
           ];
-        }
-      ];
+        };
 
-      remote-control = {
-        control-enable = false;
+        forward-zone = [
+          {
+            name = ".";
+            forward-addr = [
+              "1.1.1.1"
+              "9.9.9.9"
+            ];
+          }
+        ];
+
+        remote-control = {
+          control-enable = false;
+        };
       };
+      enableRootTrustAnchor = true;
     };
-    enableRootTrustAnchor = true;
+
+    xserver.xkb = {
+      layout = "us";
+      variant = "";
+    };
+
   };
 
   system.stateVersion = "25.05";
