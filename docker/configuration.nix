@@ -14,6 +14,7 @@
     networking = {
         hostName = "freestar";
         useDHCP = false;
+        nameservers = [ "192.168.10.10" ];
         interfaces.ens18 = {
             ipv4.addresses = [
                 {
@@ -31,8 +32,8 @@
         };
         firewall = {
             enable = true;
-            allowedUDPPorts = [ 80 443 2049 ];
-            allowedTCPPorts = [ 80 443 2049 ];
+            allowedUDPPorts = [ 53 80 443 2049 ];
+            allowedTCPPorts = [ 53 80 443 2049 ];
         };
     };
 
@@ -47,7 +48,7 @@
                 createHome = true;
                 initialPassword = "operatorwho";
                 group = "operator";
-                extraGroups = [ "networkmanager" "wheel" ];
+                extraGroups = [ "docker" "networkmanager" "wheel" ];
             };
         };
 
@@ -101,6 +102,7 @@
     
         openssh = {
             enable = true;
+            openFirewall = true;
         };
 
         qemuGuest = {
