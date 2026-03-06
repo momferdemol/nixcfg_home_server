@@ -53,6 +53,7 @@
 
         groups = {
             operator = {
+                name = "operator";
                 members = [ "operator" ];
             };
             mediashare = {
@@ -88,6 +89,7 @@
 
     environment.systemPackages = with pkgs; [
         fastfetch
+        docker_29
         dig
     ];
 
