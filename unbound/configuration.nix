@@ -149,6 +149,11 @@
       enableRootTrustAnchor = true;
     };
 
+    openssh = {
+            enable = true;
+            openFirewall = true;
+        };
+
     qemuGuest = {
       enable = true;
     };

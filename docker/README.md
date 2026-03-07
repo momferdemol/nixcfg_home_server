@@ -14,4 +14,18 @@ curl https://raw.githubusercontent.com/momferdemol/nixcfg_home_server/refs/heads
 
 # Containers
 
+## Navidrome
+
 - [Navidrome](./containers/navidrome/)
+
+> Create the `smbcred` in the `/var/secrets/` directory to establish NAS access.
+
+```
+username=<name>
+password=<secret>
+domain=WORKGROUP
+```
+
+```sh
+docker compose up -d
+```
