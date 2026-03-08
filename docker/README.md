@@ -27,5 +27,13 @@ docker compose ps
 ```
 
 ```sh
+docker logs [container]
+```
+
+```sh
 docker compose down
+```
+
+```sh
+docker container prune --filter "until=24h" --dry-run  # show stopped containers older than 24h
 ```

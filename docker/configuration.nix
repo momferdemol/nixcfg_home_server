@@ -5,35 +5,18 @@
         ./hardware-configuration.nix
     ];
 
-    boot.loader.grub = {
-        enable = true;
-        device = "/dev/sda";
-        useOSProber = true;
-    };
+    boot.loader.systemd-boot.enable = true;
+    boot.loader.efi.canTouchEfiVariables = true;
 
     networking = {
         hostName = "freestar";
-        useDHCP = false;
-        nameservers = [ "192.168.10.10" ];
-        interfaces.ens18 = {
-            ipv4.addresses = [
-                {
-                    address = "192.168.10.15";
-                    prefixLength = 32;
-                }
-            ];
-        };
-        defaultGateway = {
-            address = "192.168.10.1";
-            interface = "ens18";
-        };
         networkmanager = {
             enable = true;
         };
         firewall = {
             enable = true;
-            allowedUDPPorts = [ 53 80 443 2049 ];
-            allowedTCPPorts = [ 53 80 443 2049 ];
+            allowedUDPPorts = [ 80 443 2049 ];
+            allowedTCPPorts = [ 80 443 2049 ];
         };
     };
 
@@ -64,8 +47,8 @@
         };
     };
 
-    fileSystems."/mnt/mediashare" = {
-        device = "//192.168.10.26/Media";
+    fileSystems."/mnt/media/audio" = {
+        device = "//192.168.10.36/audio";
         fsType = "cifs";
         options =
         [
@@ -116,5 +99,5 @@
 
     };
 
-  system.stateVersion = "25.05";
+  system.stateVersion = "25.11";
 }

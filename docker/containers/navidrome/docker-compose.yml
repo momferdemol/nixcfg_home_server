@@ -1,7 +1,7 @@
 services:
   navidrome:
     image: deluan/navidrome:latest
-    user: 1001:992  # operator:operator
+    user: "1000:131"  # operator:docker
     ports:
       - "4533:4533"
     restart: unless-stopped
@@ -9,4 +9,4 @@ services:
       ND_LOGLEVEL: info
     volumes:
       - "/home/operator/navidrome/data:/data"
-      - "/mnt/mediashare:/music:ro"
+      - "/mnt/media/audio:/music:ro"

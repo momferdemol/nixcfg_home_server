@@ -124,7 +124,7 @@ nixos-generate-config --root /mnt
 Run nixos installer with your configuration.nix file.
 
 ```sh
-nixos-generate-config --root /mnt
+nixos-install --root /mnt
 ```
 
 After the installer is done.
@@ -137,6 +137,14 @@ reboot
 # References
 
 ## Commands
+
+```sh
+getent group  # list all groups
+```
+
+```sh
+cat /etc/passwd  # list all users
+```
 
 ```sh
 nixos-generate-config --root /mnt  # generate *.nix files
