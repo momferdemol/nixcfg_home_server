@@ -122,10 +122,10 @@
           qname-minimisation = true;
           interface = "0.0.0.0";
           access-control = "192.168.0.0/16 allow";
-          private-domain = "lan.d35c.net";
-          local-zone = "\"lan.d35c.net.\" redirect";
+          private-domain = "app.d35c.net";
+          local-zone = "\"app.d35c.net.\" redirect";
           local-data = [
-            "\"lan.d35c.net.\tIN A 192.168.10.11\""
+            "\"app.d35c.net.\tIN A 192.168.10.24\""
           ];
         };
 
