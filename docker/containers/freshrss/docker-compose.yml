@@ -1,0 +1,12 @@
+---
+services:
+  freshrss:
+    image: lscr.io/linuxserver/freshrss:latest
+    container_name: freshrss
+    ports:
+      - 5000:80
+    restart: unless-stopped
+    environment:
+      - TZ=Etc/UTC
+    volumes:
+      - /home/operator/freshrss/config:/config
