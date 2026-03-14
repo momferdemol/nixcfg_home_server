@@ -84,7 +84,7 @@ in
 
     virtualisation.docker = {
         enable = true;
-        extraOptions = "--iptables=false";  # use host firewall
+        # extraOptions = "--iptables=false";  # use host firewall
     };
 
     security.acme = {
@@ -110,6 +110,13 @@ in
             '';
             virtualHosts."navidrome.app.d35c.net".extraConfig = ''
                 reverse_proxy http://localhost:4533
+      
+                tls ${certloc}/cert.pem ${certloc}/key.pem {
+                    protocols tls1.3
+                }
+            '';
+            virtualHosts."torrent.app.d35c.net".extraConfig = ''
+                reverse_proxy http://localhost:8080
       
                 tls ${certloc}/cert.pem ${certloc}/key.pem {
                     protocols tls1.3
