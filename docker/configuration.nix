@@ -122,6 +122,13 @@ in
                     protocols tls1.3
                 }
             '';
+            virtualHosts."freshrss.app.d35c.net".extraConfig = ''
+                reverse_proxy http://localhost:5000
+      
+                tls ${certloc}/cert.pem ${certloc}/key.pem {
+                    protocols tls1.3
+                }
+            '';
         };
 
         openssh = {

@@ -25,7 +25,9 @@ AWS_HOSTED_ZONE=XXXXX
 
 ## Navidrome
 
+- [FreshRSS](./containers/freshrss/)
 - [Navidrome](./containers/navidrome/)
+- [Torrent](./containers/torrent/)
 
 # Commands
 
@@ -48,3 +50,7 @@ docker compose down
 ```sh
 docker container prune --filter "until=24h" --dry-run  # show stopped containers older than 24h
 ```
+
+# Reference
+
+- [Gluetun](https://github.com/qdm12/gluetun)
