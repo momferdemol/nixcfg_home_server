@@ -129,6 +129,13 @@ in
                     protocols tls1.3
                 }
             '';
+            virtualHosts."karakeep.app.d35c.net".extraConfig = ''
+                reverse_proxy http://localhost:3000
+      
+                tls ${certloc}/cert.pem ${certloc}/key.pem {
+                    protocols tls1.3
+                }
+            '';
         };
 
         openssh = {
