@@ -45,6 +45,14 @@ docker logs [container]
 ```
 
 ```sh
+docker exec -it [container] sh
+```
+
+```sh
+curl ifconfig.me  # whatsmyip
+```
+
+```sh
 docker compose down
 ```
 
