@@ -136,6 +136,13 @@ in
                     protocols tls1.3
                 }
             '';
+            virtualHosts."jellyfin.app.d35c.net".extraConfig = ''
+                reverse_proxy http://192.168.10.12:8096
+      
+                tls ${certloc}/cert.pem ${certloc}/key.pem {
+                    protocols tls1.3
+                }
+            '';
         };
 
         openssh = {
