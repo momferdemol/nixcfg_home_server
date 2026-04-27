@@ -161,6 +161,13 @@ in
                     protocols tls1.3
                 }
             '';
+            virtualHosts."frigate.app.d35c.net".extraConfig = ''
+                reverse_proxy http://192.168.20.26:5000
+      
+                tls ${certloc}/cert.pem ${certloc}/key.pem {
+                    protocols tls1.3
+                }
+            '';
         };
 
         openssh = {
