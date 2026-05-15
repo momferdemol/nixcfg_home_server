@@ -4,7 +4,7 @@ services:
     image: ghcr.io/karakeep-app/karakeep:${KARAKEEP_VERSION:-release}
     restart: unless-stopped
     volumes:
-      - "/home/operator/karakeep/data:/data"
+      - "/data/karakeep/data:/data"
     ports:
       - 3000:3000
     env_file:

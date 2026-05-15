@@ -9,4 +9,4 @@ services:
     environment:
       - TZ=Etc/UTC
     volumes:
-      - /home/operator/freshrss/config:/config
+      - /data/freshrss/config:/config

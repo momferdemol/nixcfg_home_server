@@ -10,5 +10,5 @@ services:
     environment:
       ND_LOGLEVEL: info
     volumes:
-      - "/home/operator/navidrome/data:/data"
+      - "/data/navidrome/data:/data"
       - "/mnt/media/audio:/music:ro"

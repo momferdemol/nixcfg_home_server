@@ -16,8 +16,8 @@ services:
       - WEBUI_PORT=8080
       - TORRENTING_PORT=6881
     volumes:
-      - "/home/operator/torrent/config:/config"
-      - "/home/operator/torrent/downloads:/downloads"
+      - "/data/torrent/config:/config"
+      - "/data/torrent/downloads:/downloads"
 
 #########################
 # GLUETUN
