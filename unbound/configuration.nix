@@ -125,7 +125,7 @@
           private-domain = "app.d35c.net";
           local-zone = "\"app.d35c.net.\" redirect";
           local-data = [
-            "\"app.d35c.net.\tIN A 192.168.10.34\""
+            "\"app.d35c.net.\tIN A 192.168.10.23\""
           ];
         };
 
@@ -145,11 +145,6 @@
       };
       enableRootTrustAnchor = true;
     };
-
-    openssh = {
-            enable = true;
-            openFirewall = true;
-        };
 
     qemuGuest = {
       enable = true;

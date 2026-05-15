@@ -23,8 +23,6 @@ AWS_HOSTED_ZONE=XXXXX
 
 # Containers
 
-## Navidrome
-
 - [FreshRSS](./containers/freshrss/)
 - [Karakeep](./containers/karakeep/)
 - [Navidrome](./containers/navidrome/)

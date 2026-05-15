@@ -99,6 +99,15 @@ mount --mkdir /dev/sda3 /mnt/boot
 swapon /dev/sda2
 ```
 
+Format and mount a second 'data' disk.
+
+```sh
+parted /dev/sdb -- mklabel gpt
+parted /dev/sdb -- mkpart data ext4 1MB 100%
+mkfs.ext4 -L data /dev/sdb1
+mount --mkdir /dev/sdb1 /mnt/data
+```
+
 Copy `configuration.nix` from source machine to the virtual machine.
 
 ```sh
@@ -141,6 +150,11 @@ reboot
 ```sh
 getent group  # list all groups
 ```
+
+```sh
+sudo chown -R user:group directory  # set permissions
+```
+
 
 ```sh
 cat /etc/passwd  # list all users
