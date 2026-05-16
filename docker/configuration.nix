@@ -52,7 +52,7 @@ in
     };
 
     fileSystems."/mnt/media/audio" = {
-        device = "//192.168.10.36/audio";
+        device = "//192.168.10.25/audio";
         fsType = "cifs";
         options =
         [
@@ -70,7 +70,7 @@ in
     };
 
     fileSystems."/mnt/media/downloads" = {
-        device = "//192.168.10.36/downloads";
+        device = "//192.168.10.25/downloads";
         fsType = "cifs";
         options =
         [

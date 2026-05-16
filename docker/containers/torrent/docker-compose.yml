@@ -17,7 +17,7 @@ services:
       - TORRENTING_PORT=6881
     volumes:
       - "/data/torrent/config:/config"
-      - "/data/torrent/downloads:/downloads"
+      - "/mnt/media/downloads:/downloads"
 
 #########################
 # GLUETUN
