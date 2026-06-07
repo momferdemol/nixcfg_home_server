@@ -12,6 +12,7 @@
 
 - [Unbound](./unbound)
 - [Docker Host](./docker/)
+- [Lighthouse](./lighthouse/)
 
 ### How To Install NixOS
 

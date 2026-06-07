@@ -56,6 +56,7 @@ docker compose down
 
 ```sh
 docker container prune --filter "until=24h" --dry-run  # show stopped containers older than 24h
+docker compose down -v --rmi all --remove-orphans
 ```
 
 # Reference
