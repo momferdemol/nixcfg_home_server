@@ -1,0 +1,15 @@
+---
+services:
+  music-assistant-server:
+    image: ghcr.io/music-assistant/server:latest
+    container_name: music-assistant
+    user: "1000:131"  # operator:docker
+    restart: unless-stopped
+    # set to host for MA to discover and stream to players
+    network_mode: host
+    environment:
+      # default=info, possible=(critical, error, warning, info, debug)
+      - LOG_LEVEL=info
+    volumes:
+      - "/data/music-assistant/data:/data"
+      - "/mnt/media/audio:/media:ro"

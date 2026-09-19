@@ -133,6 +133,13 @@ in
                     protocols tls1.3
                 }
             '';
+            virtualHosts."music-assistant.app.d35c.net".extraConfig = ''
+                reverse_proxy http://localhost:8095
+      
+                tls ${certloc}/cert.pem ${certloc}/key.pem {
+                    protocols tls1.3
+                }
+            '';
             virtualHosts."torrent.app.d35c.net".extraConfig = ''
                 reverse_proxy http://localhost:8080
       
