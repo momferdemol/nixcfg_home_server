@@ -1,0 +1,16 @@
+---
+services:
+  syslog-ng:
+    image: lscr.io/linuxserver/syslog-ng:latest
+    container_name: syslog-ng
+    ports:
+      - 514:514/udp
+      - 514:514/tcp
+    restart: unless-stopped
+    environment:
+      - PUID=1000
+      - PGID=996
+      - TZ=Etc/UTC
+    volumes:
+      - "/data/syslog-ng/config:/config"
+      - "/data/syslog-ng/syslog:/syslog"
